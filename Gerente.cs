@@ -6,7 +6,7 @@
     public Gerente(string nome, double salario)
     {
         this.nome = nome;
-        this.salario = salario;
+        this.salario = 200;
     }
 
     public void AumentaSalario()

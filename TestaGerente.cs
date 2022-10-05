@@ -2,7 +2,10 @@
 
     static void Main(string[] args)
     {
-        Gerente g = new Gerente("Lucas", 1232);
+        Console.WriteLine("Insira o nome do funcionario: ");
+        string nomeFuncionario = Console.ReadLine();
+
+        Gerente g = new Gerente(nomeFuncionario, 1232);
         Console.WriteLine("Salário: " + g.salario);
 
         Console.WriteLine("Aumentando o salário em 10% ");
