@@ -3,27 +3,27 @@
 
     static void Main(string[] args)
     {
-        Agencia a = new Agencia(1234);
-        Agencia b = new Agencia(5678);
-        Conta c = new Conta(a);
-        Conta cDestino = new Conta(b);
+        Agencia agenciaA = new Agencia(1234);
+        Agencia agenciaB = new Agencia(5678);
+        Conta conta = new Conta(agenciaA);
+        Conta contaDestino = new Conta(agenciaB);
 
 
         Console.WriteLine("Insira o nº da sua conta");
         int numero = Convert.ToInt32(Console.ReadLine());
-        c.numero = numero;
+        conta.numero = numero;
 
         Console.WriteLine("Insira o saldo da conta");
         double saldo = Convert.ToDouble(Console.ReadLine());
-        c.saldo = saldo;
+        conta.saldo = saldo;
 
 
         Console.WriteLine("Defina o limite da conta");
         double limite = Convert.ToDouble(Console.ReadLine());
-        c.limite = limite;
+        conta.limite = limite;
 
-        int opc = 1;
-        while (opc != 0)
+        int menuOption = 1;
+        while (menuOption != 0)
         {
             System.Console.WriteLine("------------------------------------------------------------");
             System.Console.WriteLine("Bem Vindo ao IsBank! Digite a operação que deseja realizar: ");
@@ -42,62 +42,62 @@
 
             TextReader textReader = Console.In;
             string valorTela = textReader.ReadLine();
-            opc = Convert.ToInt32(valorTela);
+            menuOption = Convert.ToInt32(valorTela);
 
-            if (opc == 1)
+            if (menuOption == 1)
             {
                 Console.WriteLine("Quanto você quer depositar ?");
                 double valorDeposito = Convert.ToDouble(Console.ReadLine());
-                c.Deposita(valorDeposito);
-                Console.WriteLine("Seu saldo agora é de: " + c.saldo);
+                conta.Deposita(valorDeposito);
+                Console.WriteLine("Seu saldo agora é de: " + conta.saldo);
 
 
             }
-            else if (opc == 2)
+            else if (menuOption == 2)
             {
                 Console.WriteLine("Quanto você quer sacar ?");
                 double valorSaque = Convert.ToDouble(Console.ReadLine());
-                if (valorSaque > c.saldo)
+                if (valorSaque > conta.saldo)
                 {
-                    c.MensagemSaldoInsuficiente();
+                    conta.MensagemSaldoInsuficiente();
 
                 }
                 else
                 {
-                    c.Saca(valorSaque);
-                    c.MensagemSucesso();
+                    conta.Saca(valorSaque);
+                    conta.MensagemSucesso();
                 }
-                c.ImprimeExtrato();
+                conta.ImprimeExtrato();
             }
-            else if (opc == 3)
+            else if (menuOption == 3)
             {
-                c.ImprimeExtrato();
+                conta.ImprimeExtrato();
             }
-            else if (opc == 4)
+            else if (menuOption == 4)
             {
-                c.ImprimeExtrato();
+                conta.ImprimeExtrato();
                 Console.WriteLine("Insira o nº da conta destino: ");
                 int nroContaDestino = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Qual valor você quer transferir?");
                 double valorTransferencia = Convert.ToDouble(Console.ReadLine());
-                if (valorTransferencia > c.saldo)
+                if (valorTransferencia > conta.saldo)
                 {
-                    c.MensagemSaldoInsuficiente();
+                    conta.MensagemSaldoInsuficiente();
                 }
                 else
                 {
-                    c.Transfere(cDestino, valorTransferencia);
-                    c.MensagemSucesso();
+                    conta.Transfere(contaDestino, valorTransferencia);
+                    conta.MensagemSucesso();
                 }
-                c.ImprimeExtrato();
+                conta.ImprimeExtrato();
 
             }
-            else if (opc == 5)
+            else if (menuOption == 5)
             {
                 Console.WriteLine("Nº da sua conta: ");
-                Console.WriteLine(c.numero);
+                Console.WriteLine(conta.numero);
                 Console.WriteLine("Nº da sua agencia: ");
-                Console.WriteLine(c.agencia.numero);
+                Console.WriteLine(conta.agencia.numero);
 
             }
         }
